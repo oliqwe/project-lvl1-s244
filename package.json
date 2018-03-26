@@ -1,6 +1,6 @@
 {
   "name": "brain-games-oli",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Hexlet - Brain Games, first course project",
   "main": "src/bin/brain-games.js",
   "scripts": {
@@ -25,7 +25,9 @@
     "url": "https://github.com/oliqwe/project-lvl1-s244/issues"
   },
   "homepage": "https://github.com/oliqwe/project-lvl1-s244#readme",
-  "dependencies": {},
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
