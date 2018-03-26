@@ -1,0 +1,27 @@
+{
+  "name": "brain_games",
+  "version": "1.0.0",
+  "description": "Brain Games first course project",
+  "main": "src/bin/brain-games.js",
+  "scripts": {
+    "babel-node": "babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliqwe/project-lvl1-s244.git"
+  },
+  "author": "oli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliqwe/project-lvl1-s244/issues"
+  },
+  "homepage": "https://github.com/oliqwe/project-lvl1-s244#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
