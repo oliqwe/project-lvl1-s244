@@ -1,6 +1,6 @@
 {
   "name": "brain-games-oli",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Hexlet - Brain Games, first course project",
   "main": "src/bin/brain-games.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "brain-games-oli": "dist/bin/brain-games.js"
+    "brain-games-oli": "dist/bin/brain-games.js",
+    "brain-even":"dist/bin/brain-even.js"
   },
   "files": [
     "dist"

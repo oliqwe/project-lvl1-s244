@@ -1,9 +1,6 @@
 #!/usr/bin/env node
+import { showWelcomeMsg, logUser } from './../';
 
-import getUserName from './../';
+showWelcomeMsg();
+logUser();
 
-console.log('Welcome to the Brain Games!');
-
-const name = getUserName();
-
-console.log(`Hello, ${name} !`);
