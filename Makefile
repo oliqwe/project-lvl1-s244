@@ -1,6 +1,9 @@
 install:
 	npm install
 
+lint:
+	npm run eslint .
+
 test:
 	echo 'run tests....'
 
