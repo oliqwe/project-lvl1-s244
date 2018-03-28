@@ -4,13 +4,13 @@ install:
 lint:
 	npm run eslint .
 
-start:
+start-brain-games:
 	npm run babel-node -- src/bin/brain-games.js
 
-start-even:
+start-brain-even:
 	npm run babel-node -- src/bin/brain-even.js
 
-start-calc:
+start-brain-calc:
 	npm run babel-node -- src/bin/brain-calc.js
 
 .PHONY: test log

@@ -13,9 +13,12 @@ export default () => {
   for (let i = 0; i < 3; i += 1) {
     const operator = randomOperator();
     const numbers = makePairOfNumbers(randomNumber(), randomNumber());
+
     console.log(`Question: ${getFirstNumber(numbers)} ${operator} ${getLastNumber(numbers)}`);
+
     const answer = readlineSync.question('Your answer: ');
     const res = calculations(numbers)(operator);
+
     if (parseInt(answer, 10) === res) {
       console.log('Correct!');
     } else {
