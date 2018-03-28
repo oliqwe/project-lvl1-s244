@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import { showWelcomeMsg, logUser } from './../';
 
-showWelcomeMsg();
-logUser();
+import runBrainGame from './../games/brain-game';
 
+runBrainGame();

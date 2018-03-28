@@ -5,7 +5,7 @@ import readlineSync from 'readline-sync';
 const showWelcomeMsg = () => console.log('Welcome to the Brain Games');
 const questionMsg = () => console.log('Answer "yes" if number even otherwise answer "no". \n');
 const questionCalcMsg = () => console.log('What is the result of the expression? \n');
-
+// const nodeGameMsg = () => console.log('Find the greatest common divisor of given numbers.');
 const logUser = () => {
   const name = readlineSync.question('May i have your name ? ');
   console.log(`Hello, ${name} ! \n`);

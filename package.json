@@ -1,6 +1,6 @@
 {
   "name": "brain-games-oli",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Hexlet - Brain Games, first course project",
   "main": "src/bin/brain-games.js",
   "scripts": {
