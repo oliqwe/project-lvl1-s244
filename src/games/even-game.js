@@ -1,25 +1,50 @@
 import readlineSync from 'readline-sync';
-import { showWelcomeMsg, questionMsg, logUser } from './../helpers';
+import { log, getX, getY, repeatedQuestion, logUser, randomNumber, askQuestion } from './../games';
+
 
 export default () => {
-  showWelcomeMsg();
-  questionMsg();
+  log('Welcome to the Brain Games! \nWhat is the result of the expression ?\n');
   const userName = logUser();
+  
+  const checkSum = (pair, isLastElement) => {
 
-  for (let i = 0; i < 3; i += 1) {
-    // generate a random number from 1 to 100
-    const randomNumber = Math.floor((Math.random() * 100) + 1);
+    const operator = randomOperator();
+    const calcResult = calculations(pair)(operator);
 
-    console.log(`Question: ${randomNumber}`);
+    log(`Question: ${getX(pair)} ${operator} ${getY(pair)}`);
+    const answer = askQuestion("Your answer: ");
+    const operationResult = parseInt(answer, 10) === calcResult ? true : false;
 
-    const answer = readlineSync.question('Your answer: ');
-    const numCheck = Number.isInteger(randomNumber / 2) ? 'yes' : 'no';
-
-    if (numCheck === answer || numCheck === answer) {
-      console.log('Correct !');
+    if (operationResult) {
+      log('Correct!');
     } else {
-      return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${numCheck}'. \nLet's try again, ${userName}!`);
+      log(`'${answer}' is wrong answer ;(. Correct answer was '${calcResult}'. \nLet's try again, ${userName}!`);
+      return false
+    }
+
+    if (isLastElement) {
+      log(`Congratulations, ${userName}!`);
     }
   }
-  return console.log(`Congratulations, ${userName}!`);
+  repeatedQuestion(checkSum);
 };
+
+const randomOperator = () => {
+  const number = randomNumber();
+  if (number <= 3) {
+    return '-';
+  } else if (number > 3 && number < 6) {
+    return '+';
+  }
+  return '*';
+};
+
+const calculations = pair => (operator) => {
+  if (operator === '+') {
+    return getX(pair) + getY(pair);
+  } else if (operator === '-') {
+    return getX(pair) - getY(pair);
+  }
+  return getX(pair) * getY(pair);
+};
+

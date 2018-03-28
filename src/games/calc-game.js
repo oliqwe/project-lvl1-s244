@@ -1,13 +1,10 @@
-
-
 import readlineSync from 'readline-sync';
 import { logUser, showWelcomeMsg, questionCalcMsg, randomNumber, randomOperator } from './../helpers';
 import { makePairOfNumbers, getFirstNumber, getLastNumber, calculations } from './../numbers';
 
 
 export default () => {
-  showWelcomeMsg();
-  questionCalcMsg();
+
   const name = logUser();
 
   for (let i = 0; i < 3; i += 1) {
@@ -25,7 +22,6 @@ export default () => {
       return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${res}'. \nLet's try again, ${name}!`);
     }
   }
-
   return console.log(`Congratulations, ${name}!`);
 };
 
