@@ -1,17 +1,11 @@
-
 import readlineSync from 'readline-sync';
+import { showWelcomeMsg, questionMsg, logUser } from './../helpers';
 
-// Messages
-const showWelcomeMsg = () => console.log('Welcome to the Brain Games');
-const questionMsg = () => console.log('Answer "yes" if number even otherwise answer "no". \n');
+export default () => {
+  showWelcomeMsg();
+  questionMsg();
+  const userName = logUser();
 
-const logUser = () => {
-  const name = readlineSync.question('May i have your name ? ');
-  console.log(`Hello, ${name} ! \n`);
-  return name;
-};
-
-const question = (userName) => {
   for (let i = 0; i < 3; i += 1) {
     // generate a random number from 1 to 100
     const randomNumber = Math.floor((Math.random() * 100) + 1);
@@ -29,7 +23,3 @@ const question = (userName) => {
   }
   return console.log(`Congratulations, ${userName}!`);
 };
-
-export { showWelcomeMsg, questionMsg, logUser, question };
-
-// "\n" - new line
