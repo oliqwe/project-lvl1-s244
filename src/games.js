@@ -6,7 +6,7 @@ const getX = pair => car(pair);
 const getY = pair => cdr(pair);
 const log = str => console.log(str);
 const askQuestion = str => readlineSync.question(str);
-const randomNumber = () => Math.floor((Math.random() * 10) + 1);
+const randomNumber = () => Math.floor((Math.random() * 100) + 1);
 
 // const logUser = (fn, question) => {
 //   const name = askQuestion(question);
