@@ -1,4 +1,4 @@
-import { log, getX, getY, repeatedQuestion, logUser, randomNumber, askQuestion } from './../games';
+import { log, getX, getY, repeatedQuestion, logUser, randomNumber, askQuestion, checkResult } from './../games';
 
 const randomOperator = () => {
   const number = randomNumber();
@@ -32,17 +32,7 @@ export default () => {
 
     const answer = askQuestion('Your answer: ');
 
-    if (parseInt(answer, 10) === calcResult) {
-      log('Correct!');
-    } else {
-      log(`'${answer}' is wrong answer ;(. Correct answer was '${calcResult}'. \nLet's try again, ${userName}!`);
-      return false;
-    }
-
-    if (isLastElement) {
-      log(`Congratulations, ${userName}!`);
-    }
-    return true;
+    return checkResult(parseInt(answer, 10), calcResult, userName, isLastElement);
   };
 
   repeatedQuestion(checkSum);

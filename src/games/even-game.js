@@ -1,5 +1,5 @@
 
-import { log, getX, repeatedQuestion, logUser, askQuestion } from './../games';
+import { log, getX, repeatedQuestion, logUser, askQuestion, checkResult } from './../games';
 
 export default () => {
   log('Welcome to the Brain Games! \nAnswer "yes" if number even otherwise answer "no".\n');
@@ -11,19 +11,9 @@ export default () => {
     log(`Question: ${number}`);
 
     const answer = askQuestion('Your answer: ');
-    const numCheck = Number.isInteger(number / 2) ? 'yes' : 'no';
+    const res = Number.isInteger(number / 2) ? 'yes' : 'no';
 
-    if (numCheck === answer) {
-      log('Correct!');
-    } else {
-      log(`'${answer}' is wrong answer ;(. Correct answer was '${numCheck}'. \nLet's try again, ${userName}!`);
-      return false;
-    }
-
-    if (isLastElement) {
-      log(`Congratulations, ${userName}!`);
-    }
-    return true;
+    return checkResult(answer, res, userName, isLastElement);
   };
   repeatedQuestion(checkYesNo);
 };

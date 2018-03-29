@@ -30,4 +30,21 @@ const repeatedQuestion = (fn) => {
   }
 };
 
-export { makePair, getX, getY, log, askQuestion, repeatedQuestion, logUser, randomNumber };
+const checkResult = (answer, res, userName, isLastElement) => {
+  if (answer === res) {
+    log('Correct!');
+  } else {
+    log(`'${answer}' is wrong answer ;(. Correct answer was '${res}'. \nLet's try again, ${userName}!`);
+    return false;
+  }
+
+  if (isLastElement) {
+    log(`Congratulations, ${userName}!`);
+  }
+  return true;
+};
+
+export {
+  makePair, getX, getY, log, askQuestion,
+  repeatedQuestion, logUser, randomNumber, checkResult,
+};
