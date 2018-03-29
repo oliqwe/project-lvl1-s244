@@ -1,10 +1,10 @@
-import { log, getX, getY, repeatedQuestion, logUser, randomNumber, askQuestion, checkResult } from './../games';
+import { log, getX, getY, randomNumber, game } from './../games';
 
 const randomOperator = () => {
   const number = randomNumber();
-  if (number <= 3) {
+  if (number <= 33) {
     return '-';
-  } else if (number > 3 && number < 6) {
+  } else if (number > 33 && number < 66) {
     return '+';
   }
   return '*';
@@ -19,21 +19,14 @@ const calculations = pair => (operator) => {
   return getX(pair) * getY(pair);
 };
 
+const greeting = 'Welcome to the Brain Games! \nWhat is the result of the expression ?\n';
+
+const calcGame = (pair) => {
+  const operator = randomOperator();
+  log(`Question: ${getX(pair)} ${operator} ${getY(pair)}`);
+  return calculations(pair)(operator);
+};
 
 export default () => {
-  log('Welcome to the Brain Games! \nWhat is the result of the exspression ?\n');
-  const userName = logUser();
-
-  const checkSum = (pair, isLastElement) => {
-    const operator = randomOperator();
-    const calcResult = calculations(pair)(operator);
-
-    log(`Question: ${getX(pair)} ${operator} ${getY(pair)}`);
-
-    const answer = askQuestion('Your answer: ');
-
-    return checkResult(parseInt(answer, 10), calcResult, userName, isLastElement);
-  };
-
-  repeatedQuestion(checkSum);
+  game(calcGame)(greeting);
 };

@@ -1,4 +1,4 @@
-import { log, getX, getY, repeatedQuestion, logUser, askQuestion, checkResult } from './../games';
+import { log, getX, getY, game } from './../games';
 
 const gcd = (a, b) => {
   if (b === 0) {
@@ -7,18 +7,13 @@ const gcd = (a, b) => {
   return gcd(b, a % b);
 };
 
+const greeting = 'Welcome to the Brain Games! \nFind the greatest common divisor of given numbers.\n';
+
+const gcdGame = (pair) => {
+  log(`Question: ${getX(pair)} ${getY(pair)}`);
+  return gcd(getX(pair), getY(pair));
+};
+
 export default () => {
-  log('Welcome to the Brain Games! \nFind the greatest common divisor of given numbers.\n');
-  const userName = logUser();
-
-  const checkSum = (pair, isLastElement) => {
-    log(`Question: ${getX(pair)} ${getY(pair)}`);
-
-    const answer = askQuestion('Your answer: ');
-    const res = gcd(getX(pair), getY(pair));
-
-    return checkResult(parseInt(answer, 10), res, userName, isLastElement);
-  };
-
-  repeatedQuestion(checkSum);
+  game(gcdGame)(greeting);
 };

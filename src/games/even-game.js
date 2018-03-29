@@ -1,20 +1,13 @@
+import { log, getX, game } from './../games';
 
-import { log, getX, repeatedQuestion, logUser, askQuestion, checkResult } from './../games';
+const greeting = 'Welcome to the Brain Games! \nAnswer "yes" if number even otherwise answer "no". ?\n';
 
-export default () => {
-  log('Welcome to the Brain Games! \nAnswer "yes" if number even otherwise answer "no".\n');
-
-  const userName = logUser();
-
-  const checkYesNo = (pair, isLastElement) => {
-    const number = getX(pair);
-    log(`Question: ${number}`);
-
-    const answer = askQuestion('Your answer: ');
-    const res = Number.isInteger(number / 2) ? 'yes' : 'no';
-
-    return checkResult(answer, res, userName, isLastElement);
-  };
-  repeatedQuestion(checkYesNo);
+const evenGame = (pair) => {
+  const number = getX(pair);
+  log(`Question: ${number}`);
+  return Number.isInteger(number / 2) ? 'yes' : 'no';
 };
 
+export default () => {
+  game(evenGame)(greeting);
+};
