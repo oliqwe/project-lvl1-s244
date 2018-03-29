@@ -1,27 +1,49 @@
-import readlineSync from 'readline-sync';
-import { logUser, showWelcomeMsg, questionCalcMsg, randomNumber, randomOperator } from './../helpers';
-import { makePairOfNumbers, getFirstNumber, getLastNumber, calculations } from './../numbers';
+import { log, getX, getY, repeatedQuestion, logUser, randomNumber, askQuestion } from './../games';
+
+const randomOperator = () => {
+  const number = randomNumber();
+  if (number <= 3) {
+    return '-';
+  } else if (number > 3 && number < 6) {
+    return '+';
+  }
+  return '*';
+};
+
+const calculations = pair => (operator) => {
+  if (operator === '+') {
+    return getX(pair) + getY(pair);
+  } else if (operator === '-') {
+    return getX(pair) - getY(pair);
+  }
+  return getX(pair) * getY(pair);
+};
 
 
 export default () => {
+  log('Welcome to the Brain Games! \nWhat is the result of the exspression ?\n');
+  const userName = logUser();
 
-  const name = logUser();
-
-  for (let i = 0; i < 3; i += 1) {
+  const checkSum = (pair, isLastElement) => {
     const operator = randomOperator();
-    const numbers = makePairOfNumbers(randomNumber(), randomNumber());
+    const calcResult = calculations(pair)(operator);
 
-    console.log(`Question: ${getFirstNumber(numbers)} ${operator} ${getLastNumber(numbers)}`);
+    log(`Question: ${getX(pair)} ${operator} ${getY(pair)}`);
 
-    const answer = readlineSync.question('Your answer: ');
-    const res = calculations(numbers)(operator);
+    const answer = askQuestion('Your answer: ');
 
-    if (parseInt(answer, 10) === res) {
-      console.log('Correct!');
+    if (parseInt(answer, 10) === calcResult) {
+      log('Correct!');
     } else {
-      return console.log(`'${answer}' is wrong answer ;(. Correct answer was '${res}'. \nLet's try again, ${name}!`);
+      log(`'${answer}' is wrong answer ;(. Correct answer was '${calcResult}'. \nLet's try again, ${userName}!`);
+      return false;
     }
-  }
-  return console.log(`Congratulations, ${name}!`);
-};
 
+    if (isLastElement) {
+      log(`Congratulations, ${userName}!`);
+    }
+    return true;
+  };
+
+  repeatedQuestion(checkSum);
+};

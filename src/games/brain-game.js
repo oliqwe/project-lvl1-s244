@@ -1,7 +1,7 @@
-import { showWelcomeMsg, logUser } from './../helpers';
+import { log, logUser } from './../games';
 
 export default () => {
-  showWelcomeMsg();
+  log('Welcome to the Brain Games! \n');
   logUser();
 };
 

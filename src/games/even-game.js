@@ -1,50 +1,30 @@
-import readlineSync from 'readline-sync';
-import { log, getX, getY, repeatedQuestion, logUser, randomNumber, askQuestion } from './../games';
 
+import { log, getX, repeatedQuestion, logUser, askQuestion } from './../games';
 
 export default () => {
-  log('Welcome to the Brain Games! \nWhat is the result of the expression ?\n');
+  log('Welcome to the Brain Games! \nAnswer "yes" if number even otherwise answer "no".\n');
+
   const userName = logUser();
-  
-  const checkSum = (pair, isLastElement) => {
 
-    const operator = randomOperator();
-    const calcResult = calculations(pair)(operator);
+  const checkYesNo = (pair, isLastElement) => {
+    const number = getX(pair);
+    log(`Question: ${number}`);
 
-    log(`Question: ${getX(pair)} ${operator} ${getY(pair)}`);
-    const answer = askQuestion("Your answer: ");
-    const operationResult = parseInt(answer, 10) === calcResult ? true : false;
+    const answer = askQuestion('Your answer: ');
+    const numCheck = Number.isInteger(number / 2) ? 'yes' : 'no';
 
-    if (operationResult) {
+    if (numCheck === answer) {
       log('Correct!');
     } else {
-      log(`'${answer}' is wrong answer ;(. Correct answer was '${calcResult}'. \nLet's try again, ${userName}!`);
-      return false
+      log(`'${answer}' is wrong answer ;(. Correct answer was '${numCheck}'. \nLet's try again, ${userName}!`);
+      return false;
     }
 
     if (isLastElement) {
       log(`Congratulations, ${userName}!`);
     }
-  }
-  repeatedQuestion(checkSum);
-};
-
-const randomOperator = () => {
-  const number = randomNumber();
-  if (number <= 3) {
-    return '-';
-  } else if (number > 3 && number < 6) {
-    return '+';
-  }
-  return '*';
-};
-
-const calculations = pair => (operator) => {
-  if (operator === '+') {
-    return getX(pair) + getY(pair);
-  } else if (operator === '-') {
-    return getX(pair) - getY(pair);
-  }
-  return getX(pair) * getY(pair);
+    return true;
+  };
+  repeatedQuestion(checkYesNo);
 };
 

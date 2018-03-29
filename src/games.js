@@ -8,6 +8,11 @@ const log = str => console.log(str);
 const askQuestion = str => readlineSync.question(str);
 const randomNumber = () => Math.floor((Math.random() * 10) + 1);
 
+// const logUser = (fn, question) => {
+//   const name = askQuestion(question);
+//   return fn(name);
+// };
+
 const logUser = () => {
   const name = askQuestion('May i have your name ? ');
   log(`Hello, ${name} ! \n`);
@@ -15,13 +20,14 @@ const logUser = () => {
 };
 
 const repeatedQuestion = (fn) => {
-
   for (let i = 0; i < 3; i += 1) {
-    const isLastElement = i === 2 ? true : false
-    const numbers = makePair(randomNumber(), randomNumber())
+    const isLastElement = i === 2;
+    const numbers = makePair(randomNumber(), randomNumber());
     const res = fn(numbers, isLastElement);
-    if (res === false ) return
+    if (res === false) {
+      return;
+    }
   }
 };
 
-export { makePair, getX, getY, log, askQuestion, repeatedQuestion, logUser, randomNumber};
+export { makePair, getX, getY, log, askQuestion, repeatedQuestion, logUser, randomNumber };
