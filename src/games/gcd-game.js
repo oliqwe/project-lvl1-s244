@@ -1,4 +1,6 @@
-import { log, getX, getY, game } from './../games';
+import { cons, car, cdr } from './../pairs';
+import { game } from './../games';
+import { randomNumber } from './../helpers';
 
 const gcd = (a, b) => {
   if (b === 0) {
@@ -7,13 +9,15 @@ const gcd = (a, b) => {
   return gcd(b, a % b);
 };
 
-const greeting = 'Welcome to the Brain Games! \nFind the greatest common divisor of given numbers.\n';
+const rule = 'Find the greatest common divisor of given numbers.';
 
-const gcdGame = (pair) => {
-  log(`Question: ${getX(pair)} ${getY(pair)}`);
-  return gcd(getX(pair), getY(pair));
+const gcdGame = () => {
+  const numbers = cons(randomNumber(), randomNumber());
+  const question = `${car(numbers)} ${cdr(numbers)}`;
+  const res = gcd(car(numbers), cdr(numbers));
+  return cons(res, question);
 };
 
 export default () => {
-  game(gcdGame)(greeting);
+  game(gcdGame, rule);
 };

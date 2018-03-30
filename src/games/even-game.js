@@ -1,13 +1,15 @@
-import { log, getX, game } from './../games';
+import { cons } from './../pairs';
+import { game } from './../games';
+import { randomNumber } from './../helpers';
 
-const greeting = 'Welcome to the Brain Games! \nAnswer "yes" if number even otherwise answer "no". ?\n';
+const rule = 'Answer "yes" if number even otherwise answer "no". ?';
 
-const evenGame = (pair) => {
-  const number = getX(pair);
-  log(`Question: ${number}`);
-  return Number.isInteger(number / 2) ? 'yes' : 'no';
+const evenGame = () => {
+  const number = randomNumber();
+  const res = Number.isInteger(number / 2) ? 'yes' : 'no';
+  return cons(res, number);
 };
 
 export default () => {
-  game(evenGame)(greeting);
+  game(evenGame, rule);
 };
