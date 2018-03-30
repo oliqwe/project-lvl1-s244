@@ -1,5 +1,5 @@
 import { cons, car, cdr } from './../pairs';
-import { game } from './../games';
+import { game } from './../';
 import { randomNumber } from './../helpers';
 
 const gcd = (a, b) => {

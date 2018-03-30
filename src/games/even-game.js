@@ -1,5 +1,5 @@
 import { cons } from './../pairs';
-import { game } from './../games';
+import { game } from './../';
 import { randomNumber } from './../helpers';
 
 const rule = 'Answer "yes" if number even otherwise answer "no". ?';

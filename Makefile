@@ -16,4 +16,7 @@ start-brain-calc:
 start-brain-gcd:
 	npm run babel-node -- src/bin/brain-gcd.js
 
+start-brain-balance:
+	npm run babel-node -- src/bin/brain-balance.js
+
 .PHONY: test log

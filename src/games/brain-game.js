@@ -1,4 +1,4 @@
-import { game } from './../games';
+import { game } from './../';
 
 export default () => {
   game();
