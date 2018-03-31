@@ -11,8 +11,7 @@ const iter = (str, step, res, acc) => {
   const intRes = acc === 0 ? str : parseInt(res, 10) + step;
   let string = acc === 0 ? `${str}` : `${str}  ${intRes}`;
   string = acc === step ? `${str}  ..` : string;
-  const ac = acc + 1;
-  return iter(string, step, intRes, ac);
+  return iter(string, step, intRes, acc + 1);
 };
 
 const progressionGame = () => {

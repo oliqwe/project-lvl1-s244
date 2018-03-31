@@ -22,4 +22,7 @@ start-brain-balance:
 start-brain-progression:
 	npm run babel-node -- src/bin/brain-progression.js
 
+start-brain-prime:
+	npm run babel-node -- src/bin/brain-prime.js
+
 .PHONY: test log
