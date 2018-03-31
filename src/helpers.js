@@ -1,6 +1,4 @@
-
-const randomNumber = () => Math.floor((Math.random() * 100) + 1);
-const bigRandomNumber = () => Math.floor((Math.random() * 1000) + 1);
+const randomNumber = maxVal => Math.floor((Math.random() * maxVal) + 1);
 const tail = str => str.slice(1);
 const lastChar = str => str.slice(-1);
 const strMiddle = str => str.slice(1, -1);
@@ -32,4 +30,4 @@ const sortAscend = (str) => {
   };
   return iter('', 0);
 };
-export { randomNumber, randomOperator, tail, lastChar, strMiddle, sortAscend, bigRandomNumber };
+export { randomNumber, randomOperator, tail, lastChar, strMiddle, sortAscend };

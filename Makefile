@@ -19,4 +19,7 @@ start-brain-gcd:
 start-brain-balance:
 	npm run babel-node -- src/bin/brain-balance.js
 
+start-brain-progression:
+	npm run babel-node -- src/bin/brain-progression.js
+
 .PHONY: test log

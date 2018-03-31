@@ -12,7 +12,7 @@ const gcd = (a, b) => {
 const rule = 'Find the greatest common divisor of given numbers.';
 
 const gcdGame = () => {
-  const numbers = cons(randomNumber(), randomNumber());
+  const numbers = cons(randomNumber(100), randomNumber(100));
   const question = `${car(numbers)} ${cdr(numbers)}`;
   const res = gcd(car(numbers), cdr(numbers));
   return cons(res, question);

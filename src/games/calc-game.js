@@ -15,7 +15,7 @@ const rule = 'What is the result of the expression ?';
 
 const calcGame = () => {
   const operator = randomOperator();
-  const numbers = cons(randomNumber(), randomNumber());
+  const numbers = cons(randomNumber(100), randomNumber(100));
   const question = `${car(numbers)} ${operator} ${cdr(numbers)}`;
   const res = calculations(numbers)(operator);
   return cons(res, question);

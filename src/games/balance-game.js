@@ -1,6 +1,6 @@
 import { cons } from './../pairs';
 import { game } from './../';
-import { bigRandomNumber, sortAscend, tail, lastChar, strMiddle } from './../helpers';
+import { randomNumber, sortAscend, tail, lastChar, strMiddle } from './../helpers';
 
 const isBalanced = (str, el) => {
   if (str.length === 1) {
@@ -38,7 +38,7 @@ const balance = (num) => {
 const rule = 'Balance the given number.';
 
 const calcGame = () => {
-  const number = bigRandomNumber();
+  const number = randomNumber(1000);
   const question = `${number}`;
   const res = balance(number);
   return cons(res, question);
