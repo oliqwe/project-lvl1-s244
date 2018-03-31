@@ -6,7 +6,8 @@ const log = str => console.log(str);
 
 // game function
 export const game = (fn, rule) => {
-  log(`Welcome to the Brain Games! \n${rule === undefined ? '' : rule}\n`);
+  const rules = rule === undefined ? '' : rule;
+  log(`Welcome to the Brain Games! \n${rules}\n`);
   const userName = askQuestion('May i have your name ? ');
   log(`Hello, ${userName} ! \n`);
 
