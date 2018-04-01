@@ -18,8 +18,7 @@ const isPrime = (n) => {
     if ((num % acc) === 0) {
       return false;
     }
-    const a = acc + 1;
-    return iter(num, a);
+    return iter(num, acc + 1);
   };
   return iter(n, 2);
 };
